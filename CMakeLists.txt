@@ -3,6 +3,12 @@ project(Project_Drishti_SCTC)
 
 set(CMAKE_CXX_STANDARD 20)
 
+# [KALKI AGI] Detect Apple Silicon (M1/M2/M3) and append the Homebrew prefix 
+# so CMake can automatically find OpenCV without manual path flags.
+if(APPLE)
+    list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew")
+endif()
+
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS} include)
 
